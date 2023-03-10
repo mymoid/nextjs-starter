@@ -1,0 +1,1 @@
+Contributors are governed by [MYMOID Code of Conduct](https://github.com/mymoid/community-health-files/blob/main/CODE_OF_CONDUCT.md) which applies to any interaction on our github org, disscution, repository, slack channel (inside MYMOID workspace), direct slack messages, or any other communication medium.
