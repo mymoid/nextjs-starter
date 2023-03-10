@@ -1,38 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PROJECT NAME
 
-## Getting Started
+## Description
 
-First, run the development server:
+> FILLME: Add description.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Keywords
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> FILLME: Add Keywords.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+# Collaborators
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Product Owner:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- USER_NAME ([@USERNAME-mymoid](https://github.com/USERNAME-mymoid))
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Trusted Committers:
 
-## Learn More
+- USER_NAME ([@USERNAME-mymoid](https://github.com/USERNAME-mymoid))
+- USER_NAME ([@USERNAME-mymoid](https://github.com/USERNAME-mymoid))
 
-To learn more about Next.js, take a look at the following resources:
+# Respositories
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Code repository:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- REPOSITORY_NAME: REPOSITORY_URL
 
-## Deploy on Vercel
+### Related repositories:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- REPOSITORY_NAME: REPOSITORY_URL
+- REPOSITORY_NAME: REPOSITORY_URL
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Table of Contents: Community health files
+
+- [How to start contributing guidelines for this project](./GETTINGSTARTED.md)
+- [Contribution guidelines for this project](./CONTRIBUTING.md)
+- [Code of conduct](./CODE_OF_CONDUCT.md)
+- [Find security guidelines for this project](./SECURITY.md)
