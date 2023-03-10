@@ -1,5 +1,5 @@
 {
-  "name": "semantic-release",
+  "name": "nextjs-starter-semantic-release",
   "version": "0.1.0",
   "private": true,
   "scripts": {

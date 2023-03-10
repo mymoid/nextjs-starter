@@ -18,7 +18,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.description}>
-          <p>nextjs-starter/basic</p>
+          <p>nextjs-starter/semantic-release</p>
         </div>
 
         <div className={styles.center}>
