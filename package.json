@@ -12,6 +12,7 @@
     "test:ci": "jest --ci"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^2.4.0",
     "@mymoid/ui-components": "^1.36.2",
     "@types/node": "18.14.6",
     "@types/react": "18.0.28",

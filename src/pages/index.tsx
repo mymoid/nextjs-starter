@@ -1,13 +1,28 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Open_Sans } from 'next/font/google'
-import { ModeSwitcher } from '@mymoid/ui-components'
+import {
+  ModeSwitcher,
+  Button,
+  Stack,
+  Avatar,
+  Typography,
+  Card,
+  Divider,
+  CardContent,
+  CardActions,
+  Box
+} from '@mymoid/ui-components'
+import { useUser } from '@auth0/nextjs-auth0/client'
 import logoSrc from '@mymoid/ui-components/logo.svg'
 import styles from '@/styles/Home.module.css'
 
 const inter = Open_Sans({ subsets: ['latin'] })
 
 export default function Home() {
+  const { user, error, isLoading } = useUser()
+
   return (
     <>
       <Head>
@@ -18,9 +33,8 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.description}>
-          <p>nextjs-starter/semantic-release</p>
+          <p>nextjs-starter/auth0</p>
         </div>
-
         <div className={styles.center}>
           <Image
             className={styles.logo}
@@ -33,8 +47,54 @@ export default function Home() {
           <h2 className={[inter.className, styles.slogan].join(' ')}>
             Let’s change the payment landscape together
           </h2>
-          <div>
+          <div className={styles.features}>
             <ModeSwitcher variant="outlined" color="inherit" />
+            <Card>
+              {error && <div>{error.message}</div>}
+              {user && (
+                <>
+                  <CardContent sx={{ minWidth: 400 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                      <Avatar
+                        variant="rounded"
+                        src={user.picture}
+                        alt={user.name}
+                      />
+                      <Stack>
+                        <Typography
+                          variant="h5"
+                          fontWeight={700}
+                          color="text.primary"
+                        >
+                          {user.name}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {user.email}
+                        </Typography>
+                      </Stack>
+                    </Box>
+                  </CardContent>
+                  <Divider />
+                </>
+              )}
+              <CardActions>
+                <Link href={`/api/auth/${user ? 'logout' : 'login'}`}>
+                  <Button
+                    variant={user ? 'text' : 'contained'}
+                    disabled={isLoading}
+                  >
+                    {user ? 'Logout' : 'Login'}
+                  </Button>
+                </Link>
+                {!user && (
+                  <Link href="/api/auth/signup">
+                    <Button variant="outlined" disabled={isLoading}>
+                      Signup
+                    </Button>
+                  </Link>
+                )}
+              </CardActions>
+            </Card>
           </div>
         </div>
         <div className={styles.description}>
