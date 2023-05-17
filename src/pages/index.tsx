@@ -15,7 +15,7 @@ import {
   Box
 } from '@mymoid/ui-components'
 import { useUser } from '@auth0/nextjs-auth0/client'
-import logoSrc from '@mymoid/ui-components/logo.svg'
+import logoSrc from '@mymoid/ui-components/logo.svg?url'
 import styles from '@/styles/Home.module.css'
 
 const inter = Open_Sans({ subsets: ['latin'] })
