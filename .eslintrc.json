@@ -16,6 +16,7 @@
           "type"
         ]
       }
-    ]
+    ],
+    "react-hooks/exhaustive-deps": "off"
   }
 }
