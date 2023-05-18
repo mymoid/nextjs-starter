@@ -1,28 +1,18 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
-import { Open_Sans } from 'next/font/google'
+
 import {
   ModeSwitcher,
   Button,
-  Stack,
-  Avatar,
-  Typography,
   Card,
-  Divider,
-  CardContent,
   CardActions,
-  Box
+  CircularProgress
 } from '@mymoid/ui-components'
-import { useUser } from '@auth0/nextjs-auth0/client'
-import logoSrc from '@mymoid/ui-components/logo.svg?url'
-import styles from '@/styles/Home.module.css'
-
-const inter = Open_Sans({ subsets: ['latin'] })
+import { ERoutes } from '@/utils/constants'
+import { useUser } from '@/hooks'
 
 export default function Home() {
-  const { user, error, isLoading } = useUser()
-
+  const { user, isLoading } = useUser()
   return (
     <>
       <Head>
@@ -31,79 +21,35 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>nextjs-starter/auth0</p>
-        </div>
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src={logoSrc}
-            alt="MYMOID Logo"
-            width={333}
-            height={53}
-            priority
-          />
-          <h2 className={[inter.className, styles.slogan].join(' ')}>
-            Let’s change the payment landscape together
-          </h2>
-          <div className={styles.features}>
-            <ModeSwitcher variant="outlined" color="inherit" />
-            <Card>
-              {error && <div>{error.message}</div>}
-              {user && (
-                <>
-                  <CardContent sx={{ minWidth: 400 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                      <Avatar
-                        variant="rounded"
-                        src={user.picture}
-                        alt={user.name}
-                      />
-                      <Stack>
-                        <Typography
-                          variant="h5"
-                          fontWeight={700}
-                          color="text.primary"
-                        >
-                          {user.name}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {user.email}
-                        </Typography>
-                      </Stack>
-                    </Box>
-                  </CardContent>
-                  <Divider />
-                </>
-              )}
-              <CardActions>
-                <Link href={`/api/auth/${user ? 'logout' : 'login'}`}>
-                  <Button
-                    variant={user ? 'text' : 'contained'}
-                    disabled={isLoading}
-                  >
-                    {user ? 'Logout' : 'Login'}
-                  </Button>
+
+      <ModeSwitcher variant="outlined" color="inherit" />
+      <Card>
+        {isLoading ? (
+          <CircularProgress />
+        ) : (
+          <CardActions>
+            {user ? (
+              <>
+                <Link href={ERoutes.DASHBOARD}>
+                  <Button variant="outlined">Go to Dashboard</Button>
                 </Link>
-                {!user && (
-                  <Link href="/api/auth/signup">
-                    <Button variant="outlined" disabled={isLoading}>
-                      Signup
-                    </Button>
-                  </Link>
-                )}
-              </CardActions>
-            </Card>
-          </div>
-        </div>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.tsx</code>
-          </p>
-        </div>
-      </main>
+                <Link href={ERoutes.LOGOUT_URL}>
+                  <Button>Logout</Button>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link href={ERoutes.LOGIN_URL}>
+                  <Button variant="contained">Login</Button>
+                </Link>
+                <Link href={ERoutes.SIGNUP_URL}>
+                  <Button variant="outlined">Signup</Button>
+                </Link>
+              </>
+            )}
+          </CardActions>
+        )}
+      </Card>
     </>
   )
 }
