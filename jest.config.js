@@ -11,7 +11,8 @@ const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
     // Handle module aliases (this will be automatically configured for you soon)
-    '^@/(.*)$': '<rootDir>/src/$1'
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '\\.(svg|svg?url)$': '<rootDir>/__mocks__/svg.js'
   },
   testEnvironment: 'jest-environment-jsdom'
 }

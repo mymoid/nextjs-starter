@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 // eslint-disable-next-line import/named
 import { render, RenderOptions } from '@testing-library/react'
 import { ThemeProvider } from '@mymoid/ui-components'
+import Layout from '@/components/Common/Layout'
 
 // https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom
 Object.defineProperty(window, 'matchMedia', {
@@ -18,9 +19,11 @@ Object.defineProperty(window, 'matchMedia', {
   }))
 })
 
-const Providers = ({ children }: { children: React.ReactNode }) => {
-  return <ThemeProvider>{children}</ThemeProvider>
-}
+const Providers = ({ children }: { children: React.ReactElement }) => (
+  <ThemeProvider>
+    <Layout>{children}</Layout>
+  </ThemeProvider>
+)
 
 const customRender = (
   ui: ReactElement,
