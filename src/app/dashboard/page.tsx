@@ -1,4 +1,4 @@
-import { withPageAuthRequired } from '@auth0/nextjs-auth0'
+'use client'
 import Link from 'next/link'
 import {
   Button,
@@ -11,7 +11,7 @@ import {
   CardActions,
   Box
 } from '@mymoid/ui-components'
-import { useUser } from '@/hooks'
+import { useUser } from '@auth0/nextjs-auth0/client'
 import { ERoutes } from '@/utils/constants'
 
 export default function Dashboard() {
@@ -48,5 +48,3 @@ export default function Dashboard() {
     </Card>
   )
 }
-
-export const getServerSideProps = withPageAuthRequired()

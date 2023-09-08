@@ -1,6 +1,6 @@
+'use client'
 import Head from 'next/head'
 import Link from 'next/link'
-
 import {
   ModeSwitcher,
   Button,
@@ -8,11 +8,12 @@ import {
   CardActions,
   CircularProgress
 } from '@mymoid/ui-components'
+import { useUser } from '@auth0/nextjs-auth0/client'
 import { ERoutes } from '@/utils/constants'
-import { useUser } from '@/hooks'
 
 export default function Home() {
   const { user, isLoading } = useUser()
+
   return (
     <>
       <Head>
@@ -21,7 +22,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <ModeSwitcher variant="outlined" color="inherit" />
       <Card>
         {isLoading ? (

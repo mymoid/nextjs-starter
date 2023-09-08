@@ -17,11 +17,22 @@ export default withMiddlewareAuthRequired(async function middleware(
   const shouldRedirectToAccountVerification =
     user !== undefined && !user?.email_verified
 
-  if (shouldRedirectToAccountVerification) {
+  if (
+    shouldRedirectToAccountVerification &&
+    request.nextUrl.pathname !== ERoutes.ACCOUNT_VERIFICATION
+  ) {
     return NextResponse.redirect(
       new URL(ERoutes.ACCOUNT_VERIFICATION, request.url)
     )
   }
+
+  if (
+    request.nextUrl.pathname === ERoutes.ACCOUNT_VERIFICATION &&
+    !shouldRedirectToAccountVerification
+  ) {
+    return NextResponse.redirect(new URL(ERoutes.DASHBOARD, request.url))
+  }
+
   return response
 })
 

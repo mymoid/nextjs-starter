@@ -1,6 +1,6 @@
+'use client'
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import { withPageAuthRequired } from '@auth0/nextjs-auth0'
+import { useRouter } from 'next/navigation'
 import {
   Container,
   Box,
@@ -13,13 +13,9 @@ import {
   Icon,
   MarkEmailUnreadIcon
 } from '@mymoid/ui-components'
-import { useUser } from '@/hooks'
-import { sendVerificationEmail } from '@/services'
-import { ERoutes } from '@/utils/constants'
+import { sendVerificationEmail, refetchSSRUser } from '@/services'
 
-function AccountVerification() {
-  const { user, refetchSSRUser } = useUser()
-  const router = useRouter()
+export default function AccountVerification() {
   const [isVerificationEmailSended, setIsVerificationEmailSended] =
     useState(false)
 
@@ -28,11 +24,9 @@ function AccountVerification() {
     setIsVerificationEmailSended(true)
   }
 
-  const { emailVerified } = user ?? {}
-
   useEffect(() => {
-    if (emailVerified) refetchSSRUser().then(() => router.push(ERoutes.HOME))
-  }, [emailVerified, refetchSSRUser, router])
+    refetchSSRUser()
+  }, [])
 
   return (
     <>
@@ -99,7 +93,3 @@ function AccountVerification() {
     </>
   )
 }
-
-export default AccountVerification
-
-export const getServerSideProps = withPageAuthRequired()

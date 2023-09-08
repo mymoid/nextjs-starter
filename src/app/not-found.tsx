@@ -1,3 +1,4 @@
+'use client'
 import { Placeholder, Typography, Box } from '@mymoid/ui-components'
 import { Global, css } from '@emotion/react'
 import Error404Image from '@mymoid/ui-components/error404.svg'

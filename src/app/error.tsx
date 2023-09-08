@@ -1,3 +1,4 @@
+'use client'
 import { Placeholder, Typography, Box, Link } from '@mymoid/ui-components'
 import { Global, css } from '@emotion/react'
 import systemError from '@mymoid/ui-components/systemError.svg'

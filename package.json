@@ -12,16 +12,15 @@
     "test:ci": "jest --ci"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "^2.4.0",
+    "@auth0/nextjs-auth0": "^3.1.0",
     "@mymoid/ui-components": "^1.36.2",
     "@types/node": "18.14.6",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "eslint": "8.35.0",
-    "eslint-config-next": "13.2.3",
-    "next": "13.2.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "next": "^13.4.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "swr": "^2.1.5",
     "typescript": "4.9.5"
   },
@@ -33,6 +32,7 @@
     "@svgr/webpack": "^8.0.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
+    "eslint-config-next": "^13.4.19",
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-import": "^2.27.5",
     "husky": "^8.0.3",

@@ -1,17 +1,13 @@
 import { screen } from '@testing-library/react'
 import { customRender } from '@/utils/test-utils'
-import Home from '@/pages'
+import Home from '@/app/page'
 
-jest.mock('@/hooks/useUser', () => {
-  return jest.fn(() => ({
+jest.mock('@auth0/nextjs-auth0/client', () => ({
+  useUser: jest.fn(() => ({
     user: {},
-    isLoading: false,
-    error: null,
-    isValidating: false,
-    mutateUser: jest.fn(),
-    refetchSSRUser: jest.fn()
+    isLoading: false
   }))
-})
+}))
 
 describe('Home', () => {
   it('renders a headline', () => {

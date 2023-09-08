@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 // eslint-disable-next-line import/named
 import { render, RenderOptions } from '@testing-library/react'
 import { ThemeProvider } from '@mymoid/ui-components'
-import Layout from '@/components/Common/Layout'
+import Layout from '@/app/layout'
 
 // https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom
 Object.defineProperty(window, 'matchMedia', {
