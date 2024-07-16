@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from 'next-intl'
-import { getMessages } from 'next-intl/server'
+import { getLocale, getMessages } from 'next-intl/server'
 import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
 import '@/styles/globals.css'
@@ -26,9 +26,10 @@ export default async function RootLayout({
 }) {
   // Providing all messages to the client
   // side is the easiest way to get started
+  const locale = await getLocale()
   const messages = await getMessages()
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body>
         <NextIntlClientProvider messages={messages}>
           <ThemeRegistry>
