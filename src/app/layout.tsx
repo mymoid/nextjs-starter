@@ -1,3 +1,5 @@
+import { NextIntlClientProvider } from 'next-intl'
+import { getMessages } from 'next-intl/server'
 import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
 import '@/styles/globals.css'
@@ -17,20 +19,25 @@ export function generateMetadata(): Metadata {
   }
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: {
   children: React.ReactNode
 }) {
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages()
   return (
     <html lang="en">
       <body>
-        <ThemeRegistry>
-          <Suspense>
-            <FloatingComponents />
-            <main>{children}</main>
-          </Suspense>
-        </ThemeRegistry>
+        <NextIntlClientProvider messages={messages}>
+          <ThemeRegistry>
+            <Suspense>
+              <FloatingComponents />
+              <main>{children}</main>
+            </Suspense>
+          </ThemeRegistry>
+        </NextIntlClientProvider>
       </body>
     </html>
   )
