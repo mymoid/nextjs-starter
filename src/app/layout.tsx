@@ -1,10 +1,9 @@
-import { NextIntlClientProvider } from 'next-intl'
-import { getLocale, getMessages } from 'next-intl/server'
 import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
 import '@/styles/globals.css'
 import { ThemeRegistry } from '@/components/themeRegistry/ThemeRegistry'
 import { META_CONFIGS } from '@/components/seo/metas'
+import { locales } from '@/utils/constants/locales.constants'
 import type { Metadata } from 'next'
 
 const FloatingComponents = dynamic(() =>
@@ -24,22 +23,20 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  // Providing all messages to the client
-  // side is the easiest way to get started
-  const locale = await getLocale()
-  const messages = await getMessages()
   return (
-    <html lang={locale}>
+    <html lang="en">
       <body>
-        <NextIntlClientProvider messages={messages}>
-          <ThemeRegistry>
-            <Suspense>
-              <FloatingComponents />
-              <main>{children}</main>
-            </Suspense>
-          </ThemeRegistry>
-        </NextIntlClientProvider>
+        <ThemeRegistry>
+          <Suspense>
+            <FloatingComponents />
+            <main>{children}</main>
+          </Suspense>
+        </ThemeRegistry>
       </body>
     </html>
   )
+}
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }))
 }
